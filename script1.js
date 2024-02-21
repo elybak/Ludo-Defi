@@ -12,11 +12,11 @@
 
 //----------------------------------------------------
 
-const btn1 = document.getElementById("btn1");
-const btn2 = document.getElementById("btn2");
+const btnNewGame = document.getElementById("btnNewGame");
+const btnRolldice = document.getElementById("btnRolldice");
 const imagesDe = document.querySelectorAll(".de img");
 // let De = document.querySelector(".de")
-const  btn3 = document.getElementById("btn3");
+const  btnHold = document.getElementById("btnHold");
 let player1CurrentScore = document.getElementById("player1CurrentScore");
 let player2CurrentScore = document.getElementById("player2CurrentScore");
 let player1Score = document.getElementById("player1Score");
@@ -52,32 +52,27 @@ let choisirJoueur = () => {
   // ajouter classe active au joueur choisi
   document.getElementById(joueur).classList.add("active"); 
   // changer le background du joueur choisi
-  changeBackgroun();
+  changeBackground();  
+
 
   return joueur;
 
 };
 
 
-
-
  // ajouter une couleur de fond au joueur choisi ET enlever la couleur de fond de l'autre joueur ET changer le joueur actif
-let changeBackgroun = () => {
+let changeBackground = () => {
   for (let player of players) {
     if (document.getElementById(player).classList.contains("active")) {
-      document.getElementById(player).style.backgroundColor = "green";
+      document.getElementById(player).style.backgroundColor = "rgba(39, 184, 39, 0.588)";
+      document.getElementById(player).style.fontWeight = "bold";
     } else {
       document.getElementById(player).style.backgroundColor = "white";
+      document.getElementById(player).style.fontWeight = "normal";
     }
   }
+
 };
-
-
-
-
-
-
-
 
 // fonction pour changer de joueur
 
@@ -123,7 +118,7 @@ let gererScoreCourant = (joueur, numeroDe) => {
   } else {
     joueur.textContent = 0;
     changerJoueur();
-    changeBackgroun();
+    changeBackground();
   }
 };
 
@@ -138,17 +133,18 @@ let gererScoreTotal = (joueur, scoreCourant) => {
   }
 };
 // fonction pour gerer le bouton newGame
-let newGame = btn1.addEventListener("click", () => {
+let newGame = btnNewGame.addEventListener("click", () => {
   resetScores();
   choisirJoueur(); 
-  gererBoutons(); 
+  gererBoutons();
+  afficherImage ( Math.floor(Math.random() * 6) + 1 );
 }
 );
 
 
 
 // fonction pour gerer le bouton lancer le dé  pour chaque joueur en utilisant les index des joueurs
-let holldice = btn2.addEventListener("click", () => {
+let holldice = btnRolldice.addEventListener("click", () => {
   let joueur = document.querySelector(".active").id;
   let scoreCourant = playerCurrenteScore[players.indexOf(joueur)];
   let numeroDe = lancerDe();
@@ -160,13 +156,13 @@ let holldice = btn2.addEventListener("click", () => {
 );
 
 // fonction pour gerer le bouton garder le score pour chaque joueur en utilisant les index des joueurs
-let hold = btn3.addEventListener("click", () => {
-  let joueur = document.querySelector(".active").id; //
+let hold = btnHold.addEventListener("click", () => {
+  let joueur = document.querySelector(".active").id;
   let scoreCourant = playerCurrenteScore[players.indexOf(joueur)];
   let scoreTotal = scores[players.indexOf(joueur)];
   gererScoreTotal(scoreTotal, scoreCourant);
   changerJoueur();
-  changeBackgroun();
+  changeBackground();
 }
 );
 
@@ -176,11 +172,11 @@ let gererBoutons = () => {
   let joueur = document.querySelector(".active");
   let scoreTotal = scores[players.indexOf(joueur)];
   if (scoreTotal >= 100) {
-    btn2.disabled = true;
-    btn3.disabled = true;
+    btnRolldice.disabled = true;
+    btnHold.disabled = true;
   } else {
-    btn2.disabled = false;
-    btn3.disabled = false;
+    btnRolldice.disabled = false;
+    btnHold.disabled = false;
   }
 };
 // appeler la fonction gererBoutons

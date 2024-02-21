@@ -5,42 +5,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Défi Ludo</title>
-  <link rel="stylesheet" href="style1.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://kit.fontawesome.com/1243cfd7e0.js" crossorigin="anonymous"></script>  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="style1.css"> 
 </head>
 
 <body>
+
+    
   <h1 class="title text-center mb-5">Défi Ludo</h1>
 
-  <div class="container d-flex justify-content-around p-0 ">
-      <div class="col-md-auto d-flex flex-column justify-content-around align-items-center w-50 bg-light
-      player1">
-        <p class="score text-danger text-center mb-5 d-flex flex-column ">
+  <div class="container d-flex justify-content-around m-auto p-0">
+      <div class="col-md-auto d-flex flex-column justify-content-around align-items-center w-50 pt-5 pb-5 player1" id="player1" >
+        <p class="score fs-3 fw-light  text-center text-uppercase mb-5 d-flex flex-column">
           Player 1
-          <span id="player1Score">0</span>
+          <span class="m-5 fs-1 text-danger "  id="player1Score">42</span>
         </p>
-        <div class="current bg-danger text-center d-flex flex-column justify-content-center align-items-center p-2">
-          <p class="current-text ">Current</p>
-          <p id="player1CurrentScore">0</p>
+        <div class="current bg-danger text-center d-flex flex-column justify-content-center align-items-center">
+          <p class="current-text text-uppercase px-3 my-0">Current</p>
+          <p id="player1CurrentScore" class="text-white">0</p>
         </div>
       </div>
 
-      <div class="col-md-auto d-flex flex-column justify-content-around align-items-center w-50 bg-white player2">
-        <p class="score text-danger text-center d-flex flex-column justify-content-center align-items-center mb-5">
+      <div class="col-md-auto d-flex flex-column justify-content-around align-items-center w-50 pt-5 pb-5 player2" id="player2" >
+        <p class="score text-center text-uppercase d-flex flex-column justify-content-center align-items-center fs-3  fw-light  mb-5">
           player 2
-          <span id="player2Score">0</span>
+          <span class="m-5 fs-1 text-danger" id="player2Score">72</span>
         </p>
         <div class="current bg-danger d-flex flex-column justify-content-center align-items-center">
-          <p class="current-text">Current</p>
-          <p id="player2CurrentScore">0</p>
+          <p class="current-text text-uppercase px-3 my-0">Current</p>
+          <p id="player2CurrentScore" class="text-white" >0</p>
         </div>
       </div>
 
-      <div class="col-md-auto d-flex flex-column justify-content-around align-items-center  position-absolute boutons m">
-        <div class="text-center d-flex flex-column justify-content-center align-items-center mb-5 boutons__haut ">
-            <button id="btn1" class="btn btn-primary m-2 mb-5 ">New Game</button>
+      <div class="col-md-auto d-flex flex-column justify-content-around align-items-center position-absolute pt-3  boutons">
+        <div class="text-center d-flex flex-column justify-content-center align-items-center  boutons__haut pt-2 ">
+            <button id="btnNewGame" class="btn mb-5 text-uppercase">
+                <i class="fa fa-thin fa-circle-plus text-bg-danger rounded-circle border border-danger"></i>                
+                Nouveau jeu
+              </button>
+                          
 
-              <div class="de m-2 ">
+              <div class="de pt-5 mt-3 ">
 
               <img class="img1" src="assets/img/de1.svg" alt="1">
               <img class="img2" src="assets/img/de2.svg" alt="2">
@@ -51,9 +59,13 @@
 
             </div>
         </div>
-        <div class=" d-flex flex-column justify-content-center align-items-center m-2 ">
-            <button id="btn2" class="btn btn-secondary mb-3 ">&#10227; Rolldice</button>
-            <button id="btn3" class="btn btn-secondary mb-3 "> hold </button>
+        <div class=" d-flex flex-column justify-content-center align-items-center mt-5  pt-5    ">
+            <button id="btnRolldice" class=" btn mt-5 pt-3 my-1 text text-uppercase">
+                <i class="fa-solid fa-arrows-rotate text-danger"></i>
+                Rolldice</button>
+            <button id="btnHold" class="btn text-uppercase "> 
+                <i class="fa-solid fa-file-arrow-down text-danger "></i>
+                hold </button>
         </div>
       </div>
       
@@ -61,7 +73,7 @@
       </div>
 
 
-  <script src="script.js"></script>
+  <script src="script1.js"></script>
 </body>
 
 </html>
