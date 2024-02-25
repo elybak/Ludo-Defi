@@ -134,18 +134,24 @@ let changerJoueur = () => {
 // fonction pour lancer le dé
 let lancerDe = () => {
   numeroDe = Math.floor(Math.random() * 6) + 1;
+  
+ 
   return numeroDe;
 };
 
 // fonction pour afficher l'image du dé qui correspond au numéro obtenu au lance du dé
 
+
 let afficherImage = (numeroDe) => {
   imagesDe.forEach((image, index) => {
+  
     if (index === numeroDe - 1) {
       image.style.display = "block";
+      
     } else {
       image.style.display = "none";
     }
+
   });
 };
 
