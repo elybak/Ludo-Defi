@@ -1,16 +1,3 @@
-// y a deux joueur player 1 et player 2
-// chaque joueur a un score total et un score courant
-// chaque joueur le de a 6 faces et chaque face a une valeur
-// chaque joueur lance le dé autant de fois qu'il le souhaite
-// chaque fois qu'un joueur lance le dé, la valeur du dé est ajoutée à son score courant
-// si le joueur obtient un 1, son score courant est remis à zéro et c'est au tour du joueur suivant
-// le joueur peut choisir de "garder" son score courant, qui est alors ajouté à son score total
-// le premier joueur qui atteint 100 points gagne
-// le joueur peut choisir de "garder" son score courant, qui est alors ajouté à son score total
-// le premier joueur qui atteint 100 points gagne
-// la partie est terminée et un message de félicitation est affiché
-
-//----------------------------------------------------
 
 const btnNewGame = document.getElementById("btnNewGame");
 const btnRolldice = document.getElementById("btnRolldice");
