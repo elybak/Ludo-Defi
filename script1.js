@@ -1,6 +1,6 @@
 // y a deux joueur player 1 et player 2
 // chaque joueur a un score total et un score courant
-// chaque joueur le de a 6 faces et chaque face a une valeur 
+// chaque joueur le de a 6 faces et chaque face a une valeur
 // chaque joueur lance le dé autant de fois qu'il le souhaite
 // chaque fois qu'un joueur lance le dé, la valeur du dé est ajoutée à son score courant
 // si le joueur obtient un 1, son score courant est remis à zéro et c'est au tour du joueur suivant
@@ -34,6 +34,7 @@ const scores = [player1Score, player2Score, player1CurrentScore, player2CurrentS
 let resetScores=() =>{
   for (let element of scores) {
     element.textContent = 0;
+
   }
 };
 
@@ -41,16 +42,16 @@ let resetScores=() =>{
 
 
 // fonction pour choisir un joueur au hasard
-let choisirJoueur = () => { 
+let choisirJoueur = () => {
 
   // Réinitialiser l'état des joueurs
   for (let player of players) {
     document.getElementById(player).classList.remove("active");
   }
   // choisir un joueur au hasard
-  let joueur = players[Math.floor(Math.random() * players.length)]; 
+  let joueur = players[Math.floor(Math.random() * players.length)];
   // ajouter classe active au joueur choisi
-  document.getElementById(joueur).classList.add("active"); 
+  document.getElementById(joueur).classList.add("active");
   // changer le background du joueur choisi
   changeBackground();  
 
@@ -60,28 +61,79 @@ let choisirJoueur = () => {
 };
 
 
+
  // ajouter une couleur de fond au joueur choisi ET enlever la couleur de fond de l'autre joueur ET changer le joueur actif
 let changeBackground = () => {
   for (let player of players) {
     if (document.getElementById(player).classList.contains("active")) {
+      // changer le background du joueur actif
       document.getElementById(player).style.backgroundColor = "rgba(39, 184, 39, 0.588)";
+      // changer le font-weight du joueur actif
       document.getElementById(player).style.fontWeight = "bold";
+       // appeler la fonction pour gerer le point rouge
+      changePoint();
+ 
+
     } else {
       document.getElementById(player).style.backgroundColor = "white";
       document.getElementById(player).style.fontWeight = "normal";
     }
+   
   }
 
 };
 
+
+// fonction pour ajouter un message indiquant le joueur actif
+let messageJoueurActif = () => {
+  for (let player of players) {
+    if (document.getElementById(player).classList.contains("active")) {
+      document.getElementById("message").textContent = `C'est au tour de ${player} de jouer`;
+    }
+  }
+};
+messageJoueurActif();
+
+
+
+
+
+
+// fonction pour gerer le point rouge qui indique le joueur actif et la suppression du point rouge du joueur inactif et quand la partie n'est pas commencée
+
+let changePoint = () => {
+   let started = false;
+   if (!started) {
+    for (let player of players) {
+      document.querySelectorAll(".player-indicator")[players.indexOf(player)].style.display = "none";
+    }
+    started = true;
+  }
+  for (let player of players) {
+    if (document.getElementById(player).classList.contains("active") ){
+      document.querySelectorAll(".player-indicator")[players.indexOf(player)].style.display = "inline-block";
+    } else {
+      document.querySelectorAll(".player-indicator")[players.indexOf(player)].style.display = "none";
+    }
+  }
+};
+changePoint();
+
+
+
+
+
+
+
+
 // fonction pour changer de joueur
 
 let changerJoueur = () => {
-  for (let player of players) { 
+  for (let player of players) {
     if (document.getElementById(player).classList.contains("active")) {
-      document.getElementById(player).classList.remove("active"); 
-      let index = players.indexOf(player); 
-      let nextPlayer = players[(index + 1) % players.length]; 
+      document.getElementById(player).classList.remove("active");
+      let index = players.indexOf(player);
+      let nextPlayer = players[(index + 1) % players.length];
       document.getElementById(nextPlayer).classList.add("active");
       return nextPlayer;
     }
@@ -98,7 +150,7 @@ let lancerDe = () => {
   return numeroDe;
 };
 
-// fonction pour afficher l'image du dé qui correspond au numéro obtenu au lance du dé 
+// fonction pour afficher l'image du dé qui correspond au numéro obtenu au lance du dé
 
 let afficherImage = (numeroDe) => {
   imagesDe.forEach((image, index) => {
@@ -110,7 +162,7 @@ let afficherImage = (numeroDe) => {
   });
 };
 
-// fonction pour gerer le score courant 
+// fonction pour gerer le score courant
 
 let gererScoreCourant = (joueur, numeroDe) => {
   if (numeroDe !== 1) {
@@ -135,7 +187,7 @@ let gererScoreTotal = (joueur, scoreCourant) => {
 // fonction pour gerer le bouton newGame
 let newGame = btnNewGame.addEventListener("click", () => {
   resetScores();
-  choisirJoueur(); 
+  choisirJoueur();
   gererBoutons();
   afficherImage ( Math.floor(Math.random() * 6) + 1 );
 }
@@ -144,14 +196,14 @@ let newGame = btnNewGame.addEventListener("click", () => {
 
 
 // fonction pour gerer le bouton lancer le dé  pour chaque joueur en utilisant les index des joueurs
-let holldice = btnRolldice.addEventListener("click", () => {
-  let joueur = document.querySelector(".active").id;
+let Rolldice = btnRolldice.addEventListener("click", () => {
+  let joueur = document.querySelector(".active").id; // récupérer le joueur actif
   let scoreCourant = playerCurrenteScore[players.indexOf(joueur)];
   let numeroDe = lancerDe();
   afficherImage(numeroDe);
   gererScoreCourant(scoreCourant, numeroDe);
 
-  
+ 
 }
 );
 
@@ -183,4 +235,3 @@ let gererBoutons = () => {
 gererBoutons();
 
 
-// fonction pour gerer le background des joueurs en utilisant les index des joueurs

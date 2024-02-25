@@ -7,73 +7,156 @@
   <title>Défi Ludo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <script src="https://kit.fontawesome.com/1243cfd7e0.js" crossorigin="anonymous"></script>  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="stylesheet" href="style1.css"> 
+  <script src="https://kit.fontawesome.com/1243cfd7e0.js" crossorigin="anonymous"> </script>  
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="style1.css"> 
 </head>
 
 <body>
+  <!-- start header -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">DEFI-JEUX</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" aria-current="page" href="#">jeux</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" href="#">action</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" href="#">multi-joueurs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" href="#" tabindex="-1" aria-disabled="true">Puzzle </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" href="#" tabindex="-1" aria-disabled="true">Aventure</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" href="#" tabindex="-1" aria-disabled="true">Stratégie</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+  </header>
+	
+    <!-- End header  -->
+ <!-- start  main  -->
+<main class="container">
 
-    
-  <h1 class="title text-center mb-5">Défi Ludo</h1>
+  <section class="row justify-content-center align-items-center bg-danger text-white mt-5">
+    <h1 class="text-center">Défi Ludo</h1>
+  </section>
 
-  <div class="container d-flex justify-content-around m-auto p-0">
-      <div class="col-md-auto d-flex flex-column justify-content-around align-items-center w-50 pt-5 pb-5 player1" id="player1" >
-        <p class="score fs-3 fw-light  text-center text-uppercase mb-5 d-flex flex-column">
-          Player 1
-          <span class="m-5 fs-1 text-danger "  id="player1Score">42</span>
+  <section class="row h-100">
+    <article class="col-md-12 d-flex flex-column justify-content-center align-items-start bg-light text-dark p-3">
+      <h3 class="text-center">Règles du jeu</h3>
+      <ul>
+        <li>Le joueur peut lancer le dé autant de fois qu'il le souhaite. Chaque résultat est ajouté à son score actuel.</li>
+        <li>Si le joueur obtient un 1, son score actuel est perdu et c'est au tour de l'autre joueur.</li>
+        <li>Si le joueur décide de conserver son score actuel, il appuie sur le bouton "Hold", et c'est au tour de l'autre joueur.</li>
+        <li>Le premier joueur qui atteint 100 points gagne la partie.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="row">
+    <div class="container col-12 d-flex justify-content-around m-auto p-0 mt-3 plateau">
+
+      <article class="col-md-auto d-flex flex-column justify-content-around align-items-center w-50 pt-5 pb-5 player1" id="player1">
+        <p class="score fs-1 fw-light text-center text-uppercase mb-5 d-flex flex-column align-items-center">
+
+          <span class="player-score">player 1 <i class="fa fa-circle fa-xs text-danger fs-6 player-indicator"></i>
+          </span> 
+            
+          <span class="m-0 text-danger" id="player1Score">42</span>
         </p>
         <div class="current bg-danger text-center d-flex flex-column justify-content-center align-items-center">
           <p class="current-text text-uppercase px-3 my-0">Current</p>
-          <p id="player1CurrentScore" class="text-white">0</p>
+          <p id="player1CurrentScore" class="text-white fs-2">0</p>
         </div>
-      </div>
+      </article>
 
-      <div class="col-md-auto d-flex flex-column justify-content-around align-items-center w-50 pt-5 pb-5 player2" id="player2" >
-        <p class="score text-center text-uppercase d-flex flex-column justify-content-center align-items-center fs-3  fw-light  mb-5">
-          player 2
-          <span class="m-5 fs-1 text-danger" id="player2Score">72</span>
+      <article class="col-md-auto d-flex flex-column justify-content-around align-items-center w-50 pt-5 pb-5 player2" id="player2">
+        <p class="score text-center text-uppercase d-flex flex-column justify-content-center align-items-center fs-1 fw-light mb-5">
+          <span class="player-score">player 2 <i class="fa fa-circle fa-xs text-danger fs-6 player-indicator"></i>
+          </span> 
+            
+          <span class="m-0 text-danger" id="player2Score">72</span>
         </p>
-        <div class="current bg-danger d-flex flex-column justify-content-center align-items-center">
+        <div class="current bg-danger d-flex flex-column justify-content-center align-items-center ">
           <p class="current-text text-uppercase px-3 my-0">Current</p>
-          <p id="player2CurrentScore" class="text-white" >0</p>
+          <p id="player2CurrentScore" class="text-white fs-2">0</p>
         </div>
-      </div>
+      </article>
 
-      <div class="col-md-auto d-flex flex-column justify-content-around align-items-center position-absolute pt-3  boutons">
-        <div class="text-center d-flex flex-column justify-content-center align-items-center  boutons__haut pt-2 ">
-            <button id="btnNewGame" class="btn mb-5 text-uppercase">
-                <i class="fa fa-thin fa-circle-plus text-bg-danger rounded-circle border border-danger"></i>                
-                Nouveau jeu
-              </button>
-                          
+      <article class="col-md-auto d-flex flex-column justify-content-around align-items-center position-absolute pt-3 boutons">
+        <div class="text-center d-flex flex-column justify-content-center align-items-center boutons__haut pt-2">
+          <button id="btnNewGame" class="btn mb-5 text-uppercase fs-5">
+            <i class="fa fa-thin fa-circle-plus text-bg-danger rounded-circle border border-danger"></i> New Game
+          </button>
+          <div class="de pt-5 mt-3">
 
-              <div class="de pt-5 mt-3 ">
-
-              <img class="img1" src="assets/img/de1.svg" alt="1">
-              <img class="img2" src="assets/img/de2.svg" alt="2">
-              <img class="img3" src="assets/img/de3.svg" alt="3">
-              <img class="img4" src="assets/img/de4.svg" alt="4">
-              <img class="img5" src="assets/img/de5.svg" alt="5">
-              <img class="img6" src="assets/img/de6.svg" alt="6">
+              <img class="img1" src="assets/img/de1.svg" alt="Dé, face 1">
+              <img class="img2" src="assets/img/de2.svg" alt="Dé, face 2">
+              <img class="img3" src="assets/img/de3.svg" alt="Dé, face 3">
+              <img class="img4" src="assets/img/de4.svg" alt="Dé, face ">
+              <img class="img5" src="assets/img/de5.svg" alt="Dé, face 1">
+              <img class="img6" src="assets/img/de6.svg" alt="Dé, face 1">
 
             </div>
         </div>
-        <div class=" d-flex flex-column justify-content-center align-items-center mt-5  pt-5    ">
-            <button id="btnRolldice" class=" btn mt-5 pt-3 my-1 text text-uppercase">
-                <i class="fa-solid fa-arrows-rotate text-danger"></i>
-                Rolldice</button>
-            <button id="btnHold" class="btn text-uppercase "> 
-                <i class="fa-solid fa-file-arrow-down text-danger "></i>
-                hold </button>
-        </div>
-      </div>
-      
-       
-      </div>
+        <div class="d-flex flex-column justify-content-center align-items-center mt-5 pt-5">
+  <button id="btnRolldice" class="btn mt-5 pt-0 my-3 text text-uppercase fs-5">
+    <i class="fa-solid fa-arrows-rotate text-danger"></i>
+    Rolldice
+  </button>
+  <button id="btnHold" class="btn text-uppercase fs-5">
+    <i class="fa-solid fa-file-arrow-down text-danger"></i>
+    Hold
+  </button>
+</div>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+
+  <!-- end main  -->
+
+  <!-- start footer  -->
+
+<footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">jeux</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">A-propos</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">contact</a></li>
+    </ul>
+    <p class="text-center text-muted">© 2021 Défi Ludo, Inc</p>
+  </footer>
+
+        
+        
+  <!-- end footer  -->
+
 
 
   <script src="script1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 
 </html>
