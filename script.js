@@ -25,9 +25,6 @@ let resetScores=() =>{
   }
 };
 
-
-
-
 // fonction pour choisir un joueur au hasard
 let choisirJoueur = () => {
 
@@ -42,12 +39,9 @@ let choisirJoueur = () => {
   // changer le background du joueur choisi
   changeBackground();  
 
-
+  afficherMessage(  joueur + " commence la partie") ;
   return joueur;
-
 };
-
-
 
  // ajouter une couleur de fond au joueur choisi ET enlever la couleur de fond de l'autre joueur ET changer le joueur actif
 let changeBackground = () => {
@@ -65,26 +59,8 @@ let changeBackground = () => {
       document.getElementById(player).style.backgroundColor = "white";
       document.getElementById(player).style.fontWeight = "normal";
     }
-   
-  }
-
+   }
 };
-
-
-// fonction pour ajouter un message indiquant le joueur actif
-let messageJoueurActif = () => {
-  for (let player of players) {
-    if (document.getElementById(player).classList.contains("active")) {
-      document.getElementById("message").textContent = `C'est au tour de ${player} de jouer`;
-    }
-  }
-};
-messageJoueurActif();
-
-
-
-
-
 
 // fonction pour gerer le point rouge qui indique le joueur actif et la suppression du point rouge du joueur inactif et quand la partie n'est pas commencée
 
@@ -106,22 +82,18 @@ let changePoint = () => {
 };
 changePoint();
 
-
-
-
-
-
-
-
 // fonction pour changer de joueur
 
 let changerJoueur = () => {
   for (let player of players) {
+
     if (document.getElementById(player).classList.contains("active")) {
       document.getElementById(player).classList.remove("active");
+
       let index = players.indexOf(player);
       let nextPlayer = players[(index + 1) % players.length];
       document.getElementById(nextPlayer).classList.add("active");
+      afficherMessage( nextPlayer + " c'est à votre tour") ;
       return nextPlayer;
     }
   }
@@ -134,14 +106,10 @@ let changerJoueur = () => {
 // fonction pour lancer le dé
 let lancerDe = () => {
   numeroDe = Math.floor(Math.random() * 6) + 1;
-  
- 
   return numeroDe;
 };
 
 // fonction pour afficher l'image du dé qui correspond au numéro obtenu au lance du dé
-
-
 let afficherImage = (numeroDe) => {
   imagesDe.forEach((image, index) => {
   
@@ -151,9 +119,9 @@ let afficherImage = (numeroDe) => {
     } else {
       image.style.display = "none";
     }
-
   });
 };
+
 
 // fonction pour gerer le score courant
 
@@ -173,8 +141,14 @@ let gererScoreTotal = (joueur, scoreCourant) => {
   joueur.textContent = parseInt(joueur.textContent) + parseInt(scoreCourant.textContent);
   scoreCourant.textContent = 0;
   if (parseInt(joueur.textContent) >= 100) {
-    alert("Félicitations! Vous avez gagné");
+
+    // alert("Félicitations! Vous avez gagné");
+    let joueur = document.querySelector(".active").id;
+    afficherMessage("Félicitations " + joueur + ", vous avez gagné !");
     resetScores();
+    
+    
+    
   }
 };
 // fonction pour gerer le bouton newGame
@@ -195,6 +169,13 @@ let Rolldice = btnRolldice.addEventListener("click", () => {
   let numeroDe = lancerDe();
   afficherImage(numeroDe);
   gererScoreCourant(scoreCourant, numeroDe);
+  afficherMessage("Vous avez obtenu un " + numeroDe);
+  if (numeroDe === 1) {
+    afficherMessage("ops pas de chance vous avez obtenu un  " + numeroDe );
+
+  }
+
+
 
  
 }
@@ -226,5 +207,17 @@ let gererBoutons = () => {
 };
 // appeler la fonction gererBoutons
 gererBoutons();
+
+
+const messageElement = document.getElementById("message");
+
+function afficherMessage(texte) {
+  messageElement.textContent = texte;
+  messageElement.parentElement.style.display = "block";
+  setTimeout(() => {
+    messageElement.parentElement.style.display = "none";
+  }, 2000); // Masquer le message après 2 secondes
+}
+
 
 
