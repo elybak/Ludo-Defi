@@ -149,7 +149,7 @@ let gererScoreTotal = (joueur, scoreCourant) => {
   joueur.textContent = parseInt(joueur.textContent) + parseInt(scoreCourant.textContent);
   scoreCourant.textContent = 0;
   
-  if (joueur.textContent >= 20) {
+  if (joueur.textContent >= 100) {
     let joueur = document.querySelector(".active").id; // récupérer le joueur actif
     afficherMessage(" félicitations " + joueur + " a gagné");
     btnRolldice.disabled = true;
