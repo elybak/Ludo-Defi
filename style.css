@@ -3,11 +3,10 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Lato", sans-serif ;
-
-    
-      
+    font-family: "Lato", sans-serif ;   
 }
+
+
 .plateau{
     height: 500px; 
     /* max-width: 1000px; */
@@ -54,6 +53,11 @@
  animation: my-animation 2s ease-in-out infinite;
 }
 
+.btn {
+  /* supprimer le style par defaut */
+    border: none;
+}
+
 
 
 
@@ -83,11 +87,12 @@
 
 /* medias querie pour les ecran plus petit que 475px */
 
-@media (max-width: 375px) {
+@media (max-width: 500px) {
 
     .de img {
         width: 60px;
         height: 60px;
+        border-radius: 9px;
     }
   
   
@@ -108,3 +113,43 @@
     }
 
 }
+
+/* medias querie pour les ecran plus petit que 350*/
+
+@media (max-width: 300px) {
+
+  .boutons__bas {
+  
+    padding-top: 4rem !important;
+  }
+  .de{
+    margin-top: 0rem !important;
+  }
+
+    .de img {
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+    }
+
+    .btn {
+        font-size: calc(0.6rem + 0.5vw);
+    }
+
+    .current {
+        font-size:calc(0.3rem + 1vw);
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+
+    }
+
+  #player1Score,
+#player2Score{
+    font-size: 2rem;
+}
+
+
+
+}
+
+

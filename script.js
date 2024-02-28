@@ -123,9 +123,6 @@ let afficherImage = (numeroDe) => {
 };
 
 
-
-
-
 // fonction pour gerer le score courant
 
 let gererScoreCourant = (joueur, numeroDe) => {
@@ -148,15 +145,18 @@ let gererScoreCourant = (joueur, numeroDe) => {
 // fonction pour gerer le score total
 
 let gererScoreTotal = (joueur, scoreCourant) => {
+
   joueur.textContent = parseInt(joueur.textContent) + parseInt(scoreCourant.textContent);
   scoreCourant.textContent = 0;
   
-  if (joueur.textContent >= 100) {
+  if (joueur.textContent >= 20) {
     let joueur = document.querySelector(".active").id; // récupérer le joueur actif
     afficherMessage(" félicitations " + joueur + " a gagné");
     btnRolldice.disabled = true;
     btnHold.disabled = true;
+    btnNewGame.style.backgroundColor = "red";
   }
+ 
  
 };
 
@@ -199,18 +199,7 @@ let hold = btnHold.addEventListener("click", () => {
 }
 );
 
-// fonction  pour gerer le comportement des boutons lancer le dé et garder le score
-// desactive le bouton "lancer le dé" et le bouton "garder le score" si "newGame" n'est pas cliqué  et si un des joueur a gagné en utilisant les index des joueurs
-let gererBoutons = () => {
-  let joueur = document.querySelector(".active");
-  let scoreTotal = scores[players.indexOf(joueur)];
-  if (scoreTotal >= 100) {
-  } else {
-    btnRolldice.disabled = false;
-    btnHold.disabled = false;
-  }
-};
-gererBoutons();
+
 
 // fonction pour afficher un message 
 
@@ -221,7 +210,30 @@ function afficherMessage(texte) {
   messageElement.parentElement.style.display = "block";
   setTimeout(() => {
     messageElement.parentElement.style.display = "none";
-  }, 2000); // Masquer le message après 2 secondes
-}
+  }, 2000);}
 
+
+  // indiquer aux joueur qu'il faut cliquer sur newGame pour commencer la partie et mettre le btnnewGame en couleur rouge et supprimer la couleur rouge quand la partie est commencée
+  if (btnNewGame.style.backgroundColor = "red") {
+    afficherMessage("Cliquez sur new Game pour commencer la partie");
+  }
+  btnNewGame.style.backgroundColor = "red";
+  btnNewGame.addEventListener("click", () => {
+    btnNewGame.style.backgroundColor = "";
+  });
+ 
+  // empecher de cliquer sur hold si le jour n'as pas encore lancé le dé au moins une fois a chaque tour. Et si au lancé de dé le joueur obtient un 1, on change de joueur et on empeche de cliquer sur hold jusqu'à ce que le joueur actif lance le dé au moins une fois
+  
+  btnHold.disabled = true;
+  btnRolldice.addEventListener("click", () => {
+    btnHold.disabled = false;
+  });
+  btnRolldice.addEventListener("click", () => {
+    if (numeroDe === 1) {
+      btnHold.disabled = true;
+    }
+  });
+  btnHold.addEventListener("click", () => {
+    btnHold.disabled = true;
+  });
 
