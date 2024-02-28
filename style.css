@@ -3,7 +3,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Lato", sans-serif ;
+    font-family: "Lato", sans-serif;
 
     
       
@@ -40,30 +40,42 @@
 .alert-message {
   /* display: none; */
   display: flex;
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
   background-color: #f5f5f5;
   border: 1px solid #ddd;
   padding: 10px;
   border-radius: 5px;
-    color: #31708f;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 20px;
-    animation: my-animation 2s ease-in-out infinite;
+ color: #31708f;
+ text-align: center;
+ font-size: 20px;
+ font-weight: bold;
+ margin-top: 20px;
+ animation: my-animation 2s ease-in-out infinite;
 }
 
 
-@keyframes my-animation {
-  0%{
-    transform: translate(0, 0);
-  }
-    50%{
-        transform: translate(0, 10px);
-    }
-    100%{
-        transform: translate(0, 0);
-    }
 
+@keyframes my-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.rouge {
+  color: red;
+  font-weight: bold;
+}
+
+
+
+@media (max-width: 500px) and (orientation: portrait) {
+  body {
+    font-size: 14px;
+  }
 }

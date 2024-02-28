@@ -17,13 +17,14 @@ let playerCurrenteScore = [ player1CurrentScore, player2CurrentScore];
 
 // fonction de reinitialisatios des scores
 const scores = [player1Score, player2Score, player1CurrentScore, player2CurrentScore];
-
 let resetScores=() =>{
   for (let element of scores) {
     element.textContent = 0;
 
   }
 };
+
+
 
 // fonction pour choisir un joueur au hasard
 let choisirJoueur = () => {
@@ -42,7 +43,6 @@ let choisirJoueur = () => {
   afficherMessage(  joueur + " commence la partie") ;
   return joueur;
 };
-
  // ajouter une couleur de fond au joueur choisi ET enlever la couleur de fond de l'autre joueur ET changer le joueur actif
 let changeBackground = () => {
   for (let player of players) {
@@ -93,7 +93,6 @@ let changerJoueur = () => {
       let index = players.indexOf(player);
       let nextPlayer = players[(index + 1) % players.length];
       document.getElementById(nextPlayer).classList.add("active");
-      afficherMessage( nextPlayer + " c'est à votre tour") ;
       return nextPlayer;
     }
   }
@@ -123,40 +122,54 @@ let afficherImage = (numeroDe) => {
 };
 
 
+
+
+
 // fonction pour gerer le score courant
 
 let gererScoreCourant = (joueur, numeroDe) => {
   if (numeroDe !== 1) {
+    afficherMessage("Vous avez obtenu un " + numeroDe);
     joueur.textContent = parseInt(joueur.textContent) + numeroDe;
+    messageElement.classList.remove("rouge"); // Enlever le message en rouge
   } else {
+    afficherMessage("ops pas de chance vous avez obtenu un  " + numeroDe.style );
+    messageElement.classList.add("rouge"); // Afficher le message en rouge
     joueur.textContent = 0;
     changerJoueur();
     changeBackground();
-  }
+  } 
 };
+
+
 
 
 // fonction pour gerer le score total
+
 let gererScoreTotal = (joueur, scoreCourant) => {
   joueur.textContent = parseInt(joueur.textContent) + parseInt(scoreCourant.textContent);
   scoreCourant.textContent = 0;
-  if (parseInt(joueur.textContent) >= 100) {
-
-    // alert("Félicitations! Vous avez gagné");
-    let joueur = document.querySelector(".active").id;
-    afficherMessage("Félicitations " + joueur + ", vous avez gagné !");
-    resetScores();
-    
-    
-    
+  
+  if (joueur.textContent >= 100) {
+    let joueur = document.querySelector(".active").id; // récupérer le joueur actif
+    afficherMessage(" félicitations " + joueur + " a gagné");
+    btnRolldice.disabled = true;
+    btnHold.disabled = true;
   }
+ 
 };
+
+
+
+
+
 // fonction pour gerer le bouton newGame
 let newGame = btnNewGame.addEventListener("click", () => {
   resetScores();
   choisirJoueur();
   gererBoutons();
   afficherImage ( Math.floor(Math.random() * 6) + 1 );
+
 }
 );
 
@@ -165,18 +178,10 @@ let newGame = btnNewGame.addEventListener("click", () => {
 // fonction pour gerer le bouton lancer le dé  pour chaque joueur en utilisant les index des joueurs
 let Rolldice = btnRolldice.addEventListener("click", () => {
   let joueur = document.querySelector(".active").id; // récupérer le joueur actif
-  let scoreCourant = playerCurrenteScore[players.indexOf(joueur)];
+  let scoreCourant = playerCurrenteScore[players.indexOf(joueur)]; // récupérer le score courant du joueur actif
   let numeroDe = lancerDe();
   afficherImage(numeroDe);
   gererScoreCourant(scoreCourant, numeroDe);
-  afficherMessage("Vous avez obtenu un " + numeroDe);
-  if (numeroDe === 1) {
-    afficherMessage("ops pas de chance vous avez obtenu un  " + numeroDe );
-
-  }
-
-
-
  
 }
 );
@@ -189,6 +194,7 @@ let hold = btnHold.addEventListener("click", () => {
   gererScoreTotal(scoreTotal, scoreCourant);
   changerJoueur();
   changeBackground();
+
 }
 );
 
@@ -198,16 +204,14 @@ let gererBoutons = () => {
   let joueur = document.querySelector(".active");
   let scoreTotal = scores[players.indexOf(joueur)];
   if (scoreTotal >= 100) {
-    btnRolldice.disabled = true;
-    btnHold.disabled = true;
   } else {
     btnRolldice.disabled = false;
     btnHold.disabled = false;
   }
 };
-// appeler la fonction gererBoutons
 gererBoutons();
 
+// fonction pour afficher un message 
 
 const messageElement = document.getElementById("message");
 
@@ -218,6 +222,5 @@ function afficherMessage(texte) {
     messageElement.parentElement.style.display = "none";
   }, 2000); // Masquer le message après 2 secondes
 }
-
 
 
