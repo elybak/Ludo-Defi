@@ -133,7 +133,7 @@ let gererScoreCourant = (joueur, numeroDe) => {
     joueur.textContent = parseInt(joueur.textContent) + numeroDe;
     messageElement.classList.remove("rouge"); // Enlever le message en rouge
   } else {
-    afficherMessage("ops pas de chance vous avez obtenu un  " + numeroDe.style );
+    afficherMessage("ops pas de chance vous avez obtenu un  " + numeroDe);
     messageElement.classList.add("rouge"); // Afficher le message en rouge
     joueur.textContent = 0;
     changerJoueur();
