@@ -102,6 +102,7 @@ let changerJoueur = () => {
 }
 
 
+
 // fonction pour lancer le dé
 let lancerDe = () => {
   numeroDe = Math.floor(Math.random() * 6) + 1;
