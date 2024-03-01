@@ -172,6 +172,7 @@ let gererScoreTotal = (joueur, scoreCourant) => {
     btnNewGame.style.backgroundColor = "red";
     // arreter le changement de joueur 
     !changerJoueur();
+
   }
 };
 
@@ -180,6 +181,7 @@ let newGame = btnNewGame.addEventListener("click", () => {
   resetScores();
   choisirJoueur();
   afficherImage ( Math.floor(Math.random() * 6) + 1 );
+  btnRolldice.disabled = false;
 
 }
 );
