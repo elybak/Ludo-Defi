@@ -160,7 +160,7 @@ let gererScoreTotal = (joueur, scoreCourant) => {
   joueur.textContent = parseInt(joueur.textContent) + parseInt(scoreCourant.textContent);
   scoreCourant.textContent = 0;
   
-  if (joueur.textContent >= 20) {
+  if (joueur.textContent >= 100) {
     // récupérer le joueur actif  
     let joueur = document.querySelector(".active").id; 
     // afficher un message de félicitations
