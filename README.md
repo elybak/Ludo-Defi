@@ -8,15 +8,13 @@ Un jeu de hasard avec Javascript
 ## Matériel:
 
 Un dé à 6 faces
-Un plateau de jeu (optionnel)
-Des pions (optionnel)
 ## Règles du jeu:
 
 1- Chaque joueur a un score total et un score courant.
 2- Le joueur 1 commence la partie.
 3- Le joueur lance le dé autant de fois qu'il le souhaite.
 4- A chaque lancer:
-   => La valeur du dé est ajoutée au score courant du joueur.
+=> La valeur du dé est ajoutée au score courant du joueur.
 => Si le joueur obtient un 1, son score courant est remis à zéro et c'est au tour de l'autre joueur.
 5- Le joueur peut choisir de "garder" son score courant, qui est alors ajouté à son score total.
 6- C'est ensuite au tour de l'autre joueur.
@@ -30,6 +28,7 @@ Des pions (optionnel)
 
 - Affichage des scores: Le score total et le score courant de chaque joueur sont affichés.
 - Message de félicitation: Un message de félicitation s'affiche lorsque le premier joueur atteint 100 points.
+
 Technologies utilisées:
 
 Javascript
@@ -38,6 +37,8 @@ bootstrap
 CSS
 
 ##  lien : 
+
+https://ludo-defi.netlify.app/
 
 ## auteur : 
 
