@@ -11,7 +11,7 @@ let player2Score = document.getElementById("player2Score");
 const player1 = document.getElementById("player1");
 const player2 = document.getElementById("player2");
 let numeroDe = Math.floor(Math.random() * 6) + 1;
-const players = ["player1", "player2"];
+let players = ["player1", "player2"];
 let playerCurrenteScore = [ player1CurrentScore, player2CurrentScore];
 
 
@@ -31,7 +31,10 @@ let choisirJoueur = () => {
 
   // Réinitialiser l'état des joueurs
   for (let player of players) {
-    document.getElementById(player).classList.remove("active");
+    // enlever la classe active
+    document.getElementById(player).classList.remove("active"); 
+    
+
   }
   // choisir un joueur au hasard
   let joueur = players[Math.floor(Math.random() * players.length)];
@@ -68,6 +71,7 @@ let changePoint = () => {
    let started = false;
    if (!started) {
     for (let player of players) {
+
       document.querySelectorAll(".player-indicator")[players.indexOf(player)].style.display = "none";
     }
     started = true;
@@ -88,23 +92,27 @@ let changerJoueur = () => {
   for (let player of players) {
 
     if (document.getElementById(player).classList.contains("active")) {
+      // enlever la classe active du joueur actif
       document.getElementById(player).classList.remove("active");
-
       let index = players.indexOf(player);
+       // choisir le joueur suivant
       let nextPlayer = players[(index + 1) % players.length];
-      document.getElementById(nextPlayer).classList.add("active");
+       // ajouter la classe active au joueur suivant
+      document.getElementById(nextPlayer).classList.add("active"); //
       return nextPlayer;
     }
   }
 
   return choisirJoueur();
    
-}
+};
+
 
 
 
 // fonction pour lancer le dé
 let lancerDe = () => {
+  // générer un nombre aléatoire entre 1 et 6
   numeroDe = Math.floor(Math.random() * 6) + 1;
   return numeroDe;
 };
@@ -114,6 +122,7 @@ let afficherImage = (numeroDe) => {
   imagesDe.forEach((image, index) => {
   
     if (index === numeroDe - 1) {
+      
       image.style.display = "block";
       
     } else {
@@ -146,29 +155,30 @@ let gererScoreCourant = (joueur, numeroDe) => {
 
 let gererScoreTotal = (joueur, scoreCourant) => {
 
+  // ajouter le score courant au score total
+
   joueur.textContent = parseInt(joueur.textContent) + parseInt(scoreCourant.textContent);
   scoreCourant.textContent = 0;
   
-  if (joueur.textContent >= 100) {
-    let joueur = document.querySelector(".active").id; // récupérer le joueur actif
+  if (joueur.textContent >= 20) {
+    // récupérer le joueur actif  
+    let joueur = document.querySelector(".active").id; 
+    // afficher un message de félicitations
     afficherMessage(" félicitations " + joueur + " a gagné");
+    // désactiver les boutons
     btnRolldice.disabled = true;
     btnHold.disabled = true;
+    // changer le background du joueur du bouton newGame
     btnNewGame.style.backgroundColor = "red";
   }
  
  
 };
 
-
-
-
-
 // fonction pour gerer le bouton newGame
 let newGame = btnNewGame.addEventListener("click", () => {
   resetScores();
   choisirJoueur();
-  gererBoutons();
   afficherImage ( Math.floor(Math.random() * 6) + 1 );
 
 }
