@@ -160,7 +160,7 @@ let gererScoreTotal = (joueur, scoreCourant) => {
   joueur.textContent = parseInt(joueur.textContent) + parseInt(scoreCourant.textContent);
   scoreCourant.textContent = 0;
   
-  if (joueur.textContent >= 100) {
+  if (joueur.textContent >= 20) {
     // récupérer le joueur actif  
     let joueur = document.querySelector(".active").id; 
     // afficher un message de félicitations
@@ -170,9 +170,9 @@ let gererScoreTotal = (joueur, scoreCourant) => {
     btnHold.disabled = true;
     // changer le background du joueur du bouton newGame
     btnNewGame.style.backgroundColor = "red";
+    // arreter le changement de joueur 
+    !changerJoueur();
   }
- 
- 
 };
 
 // fonction pour gerer le bouton newGame
